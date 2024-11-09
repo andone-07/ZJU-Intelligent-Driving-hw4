@@ -1,0 +1,45 @@
+Freezing layer 'model.22.dfl.conv.weight'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+Traceback (most recent call last):
+  File "d:\Desktop\hw4\test.py", line 136, in <module>
+    main()
+  File "d:\Desktop\hw4\test.py", line 107, in main
+    pytorch_model = load_pytorch_model(pytorch_model_path).cuda()
+  File "d:\Desktop\hw4\test.py", line 16, in load_pytorch_model
+    model.eval()  # 设置为评估模式
+  File "D:\Anaconda3\envs\ai\lib\site-packages\torch\nn\modules\module.py", line 2449, in eval
+    return self.train(False)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\model.py", line 802, in train
+    self.trainer.train()
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\trainer.py", line 207, in train
+    self._do_train(world_size)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\trainer.py", line 327, in _do_train
+    self._setup_train(world_size)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\trainer.py", line 264, in _setup_train
+    self.amp = torch.tensor(check_amp(self.model), device=self.device)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\utils\checks.py", line 692, in check_amp
+    assert amp_allclose(YOLO("yolo11n.pt"), im)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\utils\checks.py", line 679, in amp_allclose
+    a = m(batch, imgsz=imgsz, device=device, verbose=False)[0].boxes.data  # FP32 inference
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\model.py", line 176, in __call__
+    return self.predict(source, stream, **kwargs)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\model.py", line 554, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\predictor.py", line 169, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Result into one
+  File "D:\Anaconda3\envs\ai\lib\site-packages\torch\utils\_contextlib.py", line 35, in generator_context
+    response = gen.send(None)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\predictor.py", line 251, in stream_inference
+    im = self.preprocess(im0s)
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\predictor.py", line 125, in preprocess
+    im = np.stack(self.pre_transform(im))
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\predictor.py", line 157, in pre_transform
+    return [letterbox(image=x) for x in im]
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\engine\predictor.py", line 157, in <listcomp>
+    return [letterbox(image=x) for x in im]
+  File "D:\Anaconda3\envs\ai\lib\site-packages\ultralytics\data\augment.py", line 1584, in __call__
+    img = cv2.resize(img, new_unpad, interpolation=cv2.INTER_LINEAR)
+cv2.error: OpenCV(4.10.0) :-1: error: (-5:Bad argument) in function 'resize'
+> Overload resolution failed:
+>  - src is not a numpy array, neither a scalar
+>  - Expected Ptr<cv::UMat> for argument 'src'
