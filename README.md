@@ -34,7 +34,7 @@ This project selected YOLOv8 model trained on SODA10M, and converted the model t
 └── YOLOv8_SODA_fp32.trt
 ```
 
-- `dataset/`: Directory for placing training data SODA10M.
+- `dataset/`: Directory for dataset SODA10M.
 - `HT_TEST_000005_SH_011.jpg`: A single image for testing.
 - `transform.py`: Convert yolov8.pt through TensorRT.
 - `test.py`: Compare model performance before and after conversion.
@@ -78,7 +78,7 @@ python test.py
 
 ### Results are as follows:
 
-![result](images\result.png)
+![result](https://github.com/andone-07/ZJU-Intelligent-Driving-hw4/blob/master/images/result.png)
 
 ### The following conclusions can be drawn:
 
@@ -98,6 +98,6 @@ python test.py
 
 The pre - and post-conversion models can be downloaded at the following link:
 
-[yolov8-SODA.pt]()
+[yolov8-SODA.pt](https://github.com/andone-07/ZJU-Intelligent-Driving-hw4/blob/master/yolov8-SODA.pt)
 
-[yolov8_SODA_fp32.trt]()
+[yolov8_SODA_fp32.trt](https://github.com/andone-07/ZJU-Intelligent-Driving-hw4/blob/master/yolov8_SODA_fp32.trt)
